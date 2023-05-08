@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .rec{
+            width: 50%;
+            font-size: 40px;
+        }
+        .rec>th{
+            font-size: 40px;
+        }
+        .thumb{
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            margin: auto;
+            font-size: large;
+        }
+        img{
+            width: 300px;
+        }
+        .method{
+            margin: auto 100px;
+            line-height: 1.5;
+            list-style:georgian
+        }
+        ::-webkit-scrollbar{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <table calss="rec" align="center" cellspacing="20px">
+        <tr>
+            <th style="font-size: 40px;">name: <%= data[1] %></th>
+            <th rowspan="3"><img src="<%= data[6] %>" alt=""></th>
+
+        </tr>
+        <tr>
+            <th style="font-size: 40px;">category : <%= data[3] %></th>
+        </tr>
+        <tr>
+            <th style="font-size: 40px;">region : <%= data[4] %></th>
+        </tr>
+    </table>
+    
+    <div class="thumb">
+        <table align="center" style="font-size: medium;" cellpadding="20px" border="1px">
+            <tr>
+                <th>ingidient</th>
+                <th>precision</th>
+            </tr>
+            <% for(let i=9 ; i<29 ; i++){ %>
+                <%if(data[i] === "") break;%>
+                <tr>
+                    <td><%= data[i] %></td>
+                    <td><%= data[i+20] %></td>
+                </tr>
+            <%}%>
+        </table>
+        <div class="method">
+            <p><%= data[5] %></p>
+            <video controls autoplay width="500" height="240" controls>
+                <source src="<%=data[8]%>" type="video/mp4">
+                <source src="<%=data[8]%>" type="video/ogg">
+            </video>
+        </div>
+    </div>
+    
+</body>
+</html>
